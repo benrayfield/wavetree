@@ -115,8 +115,8 @@ public class TestBits{
 		Bits T17FT32TF16T = T17.cat(FT32TF16T);
 		String T17FT32TF16TCorrect = "11111111111111111011111111111111111111111111111111100000000000000001";
 		verifyBitContent(T17FT32TF16T, T17FT32TF16TCorrect);
-		T17FT32TF16T = T17FT32TF16T.balanceTree();
-		verifyBitContent(T17FT32TF16T, T17FT32TF16TCorrect);
+		//done in concat automaticly: T17FT32TF16T = T17FT32TF16T.balanceTree();
+		//verifyBitContent(T17FT32TF16T, T17FT32TF16TCorrect);
 		Bits F32F = F32.cat(F);
 		verifyClassIs(F32F, AllZero.class);
 		verifyHeightIs(F32F, 0);

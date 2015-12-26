@@ -9,6 +9,15 @@ and they each return the smaller bitstrings from cache for any substring.
 */
 public final class Fast0To16Bits implements Bits{
 	
+	//TODO IMPORTANT OPTIMIZATION: The arrays may cost more in caching than it would be
+	//to just count at most up to 16 with bitshifts. It preallocates all bitstrings up to size 16,
+	//which is 2^17 - 1 objects, which are each much bigger than those bitstrings,
+	//so the cache could thrash or not depending on if these 3 arrays
+	//(indexOfNthOne, indexOfNthZero, and copyOfData) are derived at the time or precomputed.
+	//
+	//ALSO, siz could be a byte, and data a short, but it would be a little slower to compute
+	//The arrays are the major memory cost.
+	
 	/** Java's stack is faster for ints than shorts or bytes. It uses either 32 or 64 bit blocks. */
 	public final int siz, data;
 	

@@ -1,8 +1,7 @@
 /** Ben F Rayfield offers HumanAiCore opensource GNU LGPL */
 package humanaicore.wavetree.bit.object;
 import java.io.InputStream;
-
-import humanaicore.memoryAndSpeed.CountMemory;
+//import humanaicore.memoryAndSpeed.CountMemory;
 import humanaicore.wavetree.bit.Bits;
 import humanaicore.wavetree.bit.BitsUtil;
 import humanaicore.wavetree.bit.Fast0To16Bits;
@@ -25,7 +24,7 @@ public class SimplePolycat implements Polycat{
 	public SimplePolycat(Bits... cat){
 		this.cat = cat.clone();
 		start = new long[cat.length+1];
-		CountMemory.afterLongArrayAllocated(start);
+		//CountMemory.afterLongArrayAllocated(start);
 		start[0] = 0;
 		for(int i=0; i<cat.length; i++){
 			start[i+1] = start[i]+cat[i].siz();
@@ -35,7 +34,7 @@ public class SimplePolycat implements Polycat{
 	public SimplePolycat(Bits data, long... sizes){
 		this.data = data;
 		start = new long[sizes.length+1];
-		CountMemory.afterLongArrayAllocated(start);
+		//CountMemory.afterLongArrayAllocated(start);
 		for(int i=0; i<sizes.length; i++){
 			start[i+1] = start[i]+sizes[i];
 		}

@@ -1,8 +1,7 @@
 /** Ben F Rayfield offers HumanAiCore opensource GNU LGPL */
 package humanaicore.wavetree.bit.object;
 import java.io.InputStream;
-
-import humanaicore.memoryAndSpeed.CountMemory;
+//import humanaicore.memoryAndSpeed.CountMemory;
 import humanaicore.wavetree.bit.Bits;
 import humanaicore.wavetree.bit.BitsUtil;
 
@@ -46,7 +45,7 @@ public class SimplePolydim implements Polydim{
 			+" same kind of integer as size of each dim, but it may later be useful for"
 			+" sparse representations of dims.");
 		long dimSizes[] = new long[(int)dims];
-		CountMemory.afterLongArrayAllocated(dimSizes);
+		//CountMemory.afterLongArrayAllocated(dimSizes);
 		long index = 64;
 		for(int i=0; i<dimSizes.length; i++){
 			dimSizes[i] = startsAtHeader.longAt(index);
@@ -72,7 +71,7 @@ public class SimplePolydim implements Polydim{
 		if(mult != startsWithData.siz()) throw new IllegalArgumentException(
 			"Multiply of all dimSizes is "+mult+" but bits size is "+startsWithData.siz());
 		dimSizesCumulative = new long[dimSizes.length];
-		CountMemory.afterLongArrayAllocated(dimSizesCumulative);
+		//CountMemory.afterLongArrayAllocated(dimSizesCumulative);
 		long size = 1;
 		for(int d=dimSizesCumulative.length-1; d>=0; d--){
 			dimSizesCumulative[d] = size;
@@ -168,7 +167,7 @@ public class SimplePolydim implements Polydim{
 	public Polydim bits(int... indexsButLessDims){
 		//TODO optimize by rewriting the commented code at end of this func for ints?
 		long g[] = new long[indexsButLessDims.length];
-		CountMemory.afterLongArrayAllocated(g);
+		//CountMemory.afterLongArrayAllocated(g);
 		for(int i=0; i<g.length; i++) g[i] = indexsButLessDims[i];
 		return bits(g);
 		/*
@@ -190,7 +189,7 @@ public class SimplePolydim implements Polydim{
 		long end = start+dimSizesCumulative[0];
 		Bits b = data.sub(start,end);
 		long remainingDimSizes[] = new long[dimSizes.length-indexsButLessDims.length];
-		CountMemory.afterLongArrayAllocated(remainingDimSizes);
+		//CountMemory.afterLongArrayAllocated(remainingDimSizes);
 		System.arraycopy(dimSizes, indexsButLessDims.length, remainingDimSizes, 0, remainingDimSizes.length);
 		return new SimplePolydim(b, remainingDimSizes);
 	}

@@ -16,11 +16,11 @@ public class AvlBitstring implements Bits{
 
 	public final Bits first, second;
 	
-	public final long ones;
+	public final long ones, siz;
 	
-	public final long siz;
-
-	public final int height, maxHeightDiff;
+	//public final int height, maxHeightDiff;
+	public final short height;
+	public final byte maxHeightDiff;
 	
 	
 	public final Bits firstOrNull(){ return first; }
@@ -43,14 +43,14 @@ public class AvlBitstring implements Bits{
 		// if(Math.abs(firstHeight-secondHeight) > 1) throw new
 		// IllegalArgumentException(
 		// "Heights of 2 child trees differ by more than 1");
-		height = 1 + Math.max(firstHeight, secondHeight);
+		height = (byte)(1 + Math.max(firstHeight, secondHeight));
 		// TODO Get rid of maxHeightDiff vars and func in Bits, and do tree
 		// balancing in concat func
 		int newMaxheightDiff = second.height() - first.height();
 		if(newMaxheightDiff < 0) newMaxheightDiff = -newMaxheightDiff;
 		if(newMaxheightDiff < first.maxHeightDiff()) newMaxheightDiff = first.maxHeightDiff();
 		if (newMaxheightDiff < second.maxHeightDiff()) newMaxheightDiff = second.maxHeightDiff();
-		maxHeightDiff = newMaxheightDiff;
+		maxHeightDiff = (byte)newMaxheightDiff;
 	}
 
 	public long indexOfNthOne(long n){
@@ -222,8 +222,9 @@ public class AvlBitstring implements Bits{
 	}
 
 	public Bits cat(Bits suffix){
-		if (suffix.siz() == 0)
-			return this;
+		if(suffix.siz() == 0) return this;
+		//TODO IMPORORTANT OPTIMIZATION: Create objects already balanced instead
+		//of these extra objects to be garbageCollected.
 		return balanceAVLTree(new AvlBitstring(this, suffix));
 	}
 
@@ -269,9 +270,9 @@ public class AvlBitstring implements Bits{
 	 * }
 	 */
 
-	public Bits balanceTree(){
+	/*protected Bits balanceTree(){
 		return balanceAVLTree(this);
-	}
+	}*/
 
 	public static Bits balanceAVLTree(Bits mayBeUnbalanced){
 		if (mayBeUnbalanced.maxHeightDiff() <= 1) return mayBeUnbalanced;

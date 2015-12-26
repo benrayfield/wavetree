@@ -202,8 +202,9 @@ public interface Bits /*extends Internable<Bits>*/{
 	but probably not. I'm considering allowing branches to be concat without balancing immediately
 	and to expand height from byte var to int var, so they could be used as linkedlists too,
 	but the main use is AVL tree which defines balanced as maxHeightDiff() <= 1.
-	*/
+	*
 	public Bits balanceTree();
+	*/
 	
 	/** Cached, at most 1 step.
 	<br><br>
