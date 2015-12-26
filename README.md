@@ -18,16 +18,27 @@ Wavetree has serious memory problems especially with AVL tree, but the exponenti
 All sizes measured in bits. startMemoryInBits=704643072 Subtracting this from wavetree memory use. This randBitsInAsBalancedATreeAsPossible does not pay extra for having the tree up to twice as deep, as usual in AVL, so it will actually use more.
 
 wavetreeMem=1237319680 biggestBits=8388608 ratio=147
+
 wavetreeMem=1262485504 biggestBits=16777216 ratio=75
+
 wavetreeMem=1287651328 biggestBits=33554432 ratio=38
 
 This time, random sizes so requires AVL rotation:
+
 wavetreeMem=1270874112 biggestBits=2157624 ratio=589
+
 wavetreeMem=1778384896 biggestBits=3994713 ratio=445
+
 wavetreeMem=2063597568 biggestBits=3994713 ratio=516
+
 wavetreeMem=2751463424 biggestBits=3994713 ratio=688
+
 wavetreeMem=3628072960 biggestBits=3994713 ratio=908
+
 wavetreeMem=3779067904 biggestBits=3994713 ratio=946
+
 wavetreeMem=3892314112 biggestBits=3994713 ratio=974
+
 wavetreeMem=5041553408 biggestBits=3994713 ratio=1262
+
 wavetreeMem=5083496448 biggestBits=33554432 ratio=151
